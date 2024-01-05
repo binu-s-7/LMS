@@ -31,7 +31,6 @@ export class AddItemComponent implements OnInit {
   //   'Science',
   //   'Poetry',
   //   'Children',
-  //   'Thriller',
   // ];
   status = ['Borrowed', 'Available'];
 
