@@ -1,0 +1,36 @@
+.login-card {
+    width: 300px; /* Adjust the width as needed */
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-card-header {
+    background-color: #f3f3f3;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .example-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  

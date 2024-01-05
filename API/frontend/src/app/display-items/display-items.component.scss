@@ -1,0 +1,108 @@
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(251, 151, 151);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.add-item button {
+  margin-left: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-flat-button {
+  transition: background-color 0.3s ease;
+}
+
+.mat-flat-button:hover {
+  background-color: #90caf9; 
+}
+
+////
+
+
+.mat-elevation-z8 {
+  max-height: 75vh; /* Set a maximum height for the table */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 100%; /* Adjust width as needed */
+  scrollbar-width: thin; /* Set scrollbar width (modern browsers) */
+  scrollbar-color: #ccc #f5f5f5
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f5f5f5;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+}
+
+tr.mat-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+mat-form-field {
+  width: 150px;
+  height: 80px;
+  font-size: 13px;
+}
+
+.mat-datepicker-content {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+button.mat-icon-button,
+button.mat-flat-button {
+  min-width: 32px;
+  min-height: 32px;
+  margin: 0 4px;
+}
+
+button.mat-icon-button:hover,
+button.mat-flat-button:hover {
+  background-color: #e0e0e0;
+}
+
+
+.mat-elevation-z8::-webkit-scrollbar {
+  width: 8px; /* Set scrollbar width */
+}
+
+.mat-elevation-z8::-webkit-scrollbar-track {
+  background: #f5f5f5; /* Set scrollbar track color */
+}
+
+.mat-elevation-z8::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Set scrollbar thumb color */
+  border-radius: 10px; /* Set scrollbar thumb border radius */
+  border: 2px solid #f5f5f5; /* Set scrollbar thumb border */
+}
+
+.mat-elevation-z8::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; /* Set scrollbar thumb color on hover */
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
