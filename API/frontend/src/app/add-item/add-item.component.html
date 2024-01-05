@@ -92,3 +92,24 @@
                       *ngFor="let publisher of publishersList"
                       [value]="publisher"
                     >
+                      {{ publisher }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>publisher is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>Language</mat-label>
+                  <mat-select formControlName="language">
+                    <mat-option
+                      *ngFor="let language of languagesList"
+                      [value]="language"
+                    >
