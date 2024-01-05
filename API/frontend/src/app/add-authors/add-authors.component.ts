@@ -32,6 +32,25 @@
                       formControlName="author"
                       required
                     />
+                        <mat-error>Title is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+  
+          <mat-card-actions>
+            <div
+              class="row"
+              style="align-self: flex-end; margin-left: auto; padding: 10px"
+            >
+              <button
+                (click)="onSave()"
+                class="m-2"
+                style="white-space: pre-wrap"
+                mat-flat-button
+              >
+                  
                       
                 
 
