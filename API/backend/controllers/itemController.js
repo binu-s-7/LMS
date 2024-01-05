@@ -4,6 +4,6 @@ import Item from "../models/itemModel.js";
 // @desc    Get all items
 // @route   GET /api/items
 const getAllItems = asyncHandler(async (req, res) => {
-  const items = awa Item.found({});
+  const items = await Item.find({});
   res.json(items);
 });
