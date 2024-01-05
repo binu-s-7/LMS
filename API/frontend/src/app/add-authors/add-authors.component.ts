@@ -10,7 +10,29 @@
                  Add an Author
             </mat-card-title>
           </mat-card-title-group>
-<mat-divider></mat-divider>
+
+                <mat-divider></mat-divider>
+                
+                <mat-card-content style="margin-top: 15px">
+            <form [formGroup]="form">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field
+                    class="mb-2"
+                    appearance="fill"
+                    style="width: 100%"
+                  >
+                    <mat-label>title</mat-label>
+                    <input
+                      type="text"
+                      #titleField
+                      matInput
+                      maxlength="70"
+                      placeholder="author"
+                      formControlName="author"
+                      required
+                    />
+                      
                 
 
 
