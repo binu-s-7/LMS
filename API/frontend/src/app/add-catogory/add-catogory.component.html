@@ -12,4 +12,50 @@
           </mat-card-title-group>
   
           <mat-divider></mat-divider>
+
+          <mat-card-content style="margin-top: 15px">
+            <form [formGroup]="form">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field
+                    class="mb-2"
+                    appearance="fill"
+                    style="width: 100%"
+                  >
+                    <mat-label>category</mat-label>
+                    <input
+                      type="text"
+                      #titleField
+                      matInput
+                      maxlength="70"
+                      placeholder="category"
+                      formControlName="category"
+                      required
+                    />
+                    <mat-error>Category is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+  
+          <mat-card-actions>
+            <div
+              class="row"
+              style="align-self: flex-end; margin-left: auto; padding: 10px"
+            >
+              <button
+                (click)="onSave()"
+                class="m-2"
+                style="white-space: pre-wrap"
+                mat-flat-button
+              >
+                save
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
   
