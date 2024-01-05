@@ -19,3 +19,21 @@ export class AddCatogoryComponent {
     public dialogRef: MatDialogRef<AddCatogoryComponent>,
     private itemsService: ItemsServiceService
   ) {}
+
+  onSave() {
+    const category = this.form.value.category as string;
+    this.itemsService.addCategory(category).subscribe(() => {
+      this.dialogRef.close(category);
+      this.snackBar.open('Category added Successfully', 'Dismiss', {
+        duration: 3000,
+        
+   onSave() { 
+     const category = this.form.value.category as string;
+    this.itemsService.addCategory(category).subscribe(() =>}
+        
+     
+      });
+    });
+  }
+}
+
