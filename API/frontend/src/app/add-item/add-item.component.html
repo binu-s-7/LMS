@@ -141,3 +141,54 @@
                   appearance="fill"
                   style="width: 100%"
                 >
+                  <mat-label>Availability</mat-label>
+                  <input
+                    type="text"
+                    matInput
+                    formControlName="status"
+                    [matAutocomplete]="auto"
+                  />
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let item of status" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-error>Availability is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="fill" style="width: 100%">
+                  <mat-label>Borrowed Date</mat-label>
+                  <input
+                    placeholder="Date"
+                    type="text"
+                    matInput
+                    formControlName="borrowedDate"
+                    [matDatepicker]="pickerA"
+                    (click)="pickerA.open()"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerA"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #pickerA></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div
+            class="row"
+            style="align-self: flex-end; margin-left: auto; padding: 10px"
+          >
+            <button
+              (click)="onSave()"
+              class="m-2"
+              style="white-space: pre-wrap"
+              mat-flat-button
+            >
