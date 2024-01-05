@@ -16,6 +16,6 @@ export class AddCatogoryComponent {
 
   constructor(
     private snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<AddCategoryComponent>,
+    public dialogRef: MatDialogRef<AddCatogoryComponent>,
     private itemsService: ItemsServiceService
   ) {}
