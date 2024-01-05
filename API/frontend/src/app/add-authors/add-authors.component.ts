@@ -14,6 +14,16 @@
   
           <mat-divider></mat-divider>
 
+                <mat-card-content style="margin-top: 15px">
+            <form [formGroup]="form">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field
+                    class="mb-2"
+                    appearance="fill"
+                    style="width: 100%"
+                  >
+
                 
 
               
