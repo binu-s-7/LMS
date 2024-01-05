@@ -13,3 +13,9 @@ export class AddCatogoryComponent {
   form = new FormGroup({
     category: new FormControl('', [Validators.required]),
   });
+
+  constructor(
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AddCategoryComponent>,
+    private itemsService: ItemsServiceService
+  ) {}
