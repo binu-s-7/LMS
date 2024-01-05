@@ -113,3 +113,31 @@
                       *ngFor="let language of languagesList"
                       [value]="language"
                     >
+                      {{ language }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>language is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>Borrowed By</mat-label>
+                  <input matInput formControlName="borrowedBy" type="text" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
