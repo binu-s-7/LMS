@@ -51,3 +51,63 @@ export class AddItemComponent implements OnInit {
     public dialogRef: MatDialogRef<AddItemComponent>,
     private itemsService: ItemsServiceService
   ) {}
+  
+ngOnInit(): void {
+  this.itemsService.getAuthors().subscribe({
+    next: (res)=>{
+      this.authorsList = res.map(item => item.author);
+    }
+  })
+  this.itemsService.getPublishers().subscribe({
+    next: (res)=>{
+      this.publishersList = res.map(item => item.publisher);
+    }
+  })
+  this.itemsService.getLanguages().subscribe({
+    next: (res)=>{
+      this.languagesList = res.map(item => item.language);
+    }
+  })
+  this.itemsService.getCategory().subscribe({
+    next: (res)=>{
+      this.categoriesList = res.map(item => item.category);
+    }
+  })
+}  
+
+  onSave() {
+    const postData = {
+      title: this.form.value.title,
+      author: this.form.value.author,
+      category: this.form.value.category,
+      publisher: this.form.value.publisher,
+      language: this.form.value.language,
+      status: this.form.value.status,
+      borrowedBy: this.form.value.borrowedBy,
+      borrowedDate: this.form.value.borrowedDate,
+    };
+    this.itemsService.addItem(postData as Item).subscribe(() => {
+      this.dialogRef.close(postData as Item);
+      this.snackBar.open('Item added Successfully', 'Dismiss', {
+        duration: 3000,
+      });
+    });
+  }
+
+  generateUniqueId() {
+    let newId: string;
+    let idExists: boolean;
+    let existData: string[] = [];
+
+    this.itemsService.getItems().subscribe((res) => {
+      res.forEach((item) => existData.push(item.id));
+    });
+
+    do {
+      newId = (Math.floor(Math.random() * 90000) + 10000).toString();
+      idExists = existData.includes(newId);
+    } while (idExists);
+
+    return newId;
+  }
+}
