@@ -8,3 +8,13 @@ const getAllAuthors = asyncHandler(async (req, res) => {
   res.json(author);
 });
 
+// @desc    create new author
+// @route   GET /api/authors
+const createAuthor = asyncHandler(async (req, res) => {
+  const {  author  } = req.body;
+
+  const createdAuthor = await Author.create({
+    author,
+  });
+
+  
