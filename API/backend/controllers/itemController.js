@@ -93,3 +93,20 @@ const updateItem = asyncHandler(async (req, res) => {
     throw new Error("Item not found");
   }
 });
+
+// @desc    Delete item by _id
+// @route   DELETE /api/items/:id
+const deleteItemById = asyncHandler(async (req, res) => {
+    const item = await Item.findById(req.params.id);
+  
+    if (item) {
+      await Item.deleteOne({ _id: req.params.id });
+      res.json({ message: "Item removed" });
+    } else {
+      res.status(404);
+      throw new Error("Item not found");
+    }
+  });
+  
+
+export { createItem, updateItem, getItemById, deleteItemById, getAllItems };
