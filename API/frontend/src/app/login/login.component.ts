@@ -14,6 +14,7 @@ export class LoginComponent {
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
+  
   constructor(private router: Router, private userService: UserService,private snackBar: MatSnackBar,) {}
 
   proceedLogin() {
@@ -48,3 +49,7 @@ export class LoginComponent {
       }
     })
   }
+  goToRegister() {
+    this.router.navigate([`/register`]);
+  }
+}
