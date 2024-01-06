@@ -17,8 +17,14 @@ const createAuthor = asyncHandler(async (req, res) => {
     author,
   });
 
- 
+    if (createdAuthor) {
+    res.status(201).json({
+      author: createdAuthor.author,
+    });
+  } else {
+    res.status(400);
+    throw new Error("invalid data");
+  }
+});
 
-
-
-  
+export { createAuthor, getAllAuthors };
