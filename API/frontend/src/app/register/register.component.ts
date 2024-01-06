@@ -34,4 +34,27 @@ constructor(
         });
         this.router.navigate([`/login`]);
       },
+       error: (error) => {
+        if (error.error.message === 'Invalid email or password') {
+          // Show a snackBar for invalid credentials
+          this.snackBar.open('Invalid email or password. Please try again.', 'Dismiss', {
+            duration: 3000,
+          });
+        } else if (error.error.message.startsWith('E11000 duplicate key error')) {
+          // Show a snackBar for duplicate key error
+          this.snackBar.open('User already logged in', 'Dismiss', {
+            duration: 3000,
+          });
+        } else {
+          // Show a generic snackBar for other errors
+          this.snackBar.open('An error occurred. Please try again later.', 'Dismiss', {
+            duration: 3000,
+          });
+        }
+
+      },
+    });
+  }
+}
+
 
