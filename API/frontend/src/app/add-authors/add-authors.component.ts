@@ -21,16 +21,7 @@ import { ItemsServiceService } from '../services/items-service.service';
     private itemsService: ItemsServiceService
   ) {}
 
-  onSave() {
-    const author = this.form.value.author as string;
-    this.itemsService.addAuthor(author).subscribe(() => {
-      this.dialogRef.close(author);
-      this.snackBar.open('Author added Successfully', 'Dismiss', {
-        duration: 3000,
-      });
-    });
-  }
-}
+  
 
   
 
