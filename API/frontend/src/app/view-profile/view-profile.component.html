@@ -36,3 +36,25 @@
                 </mat-form-field>
               </div>
             </div>
+              <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>Age</mat-label>
+                  <input
+                    type="text"
+                    #titleField
+                    matInput
+                    maxlength="70"
+                    placeholder="Age"
+                    formControlName="age"
+                    required
+                    readonly="true"
+                  />
+                  <mat-error>Age is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
