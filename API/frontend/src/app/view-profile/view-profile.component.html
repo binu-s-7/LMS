@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 mb-3">
+      <mat-card>
+        <mat-card-title-group>
+          <mat-card-title
+            mat-dialog-title
+            class="d-flex align-items-center mb-1"
+          >
+            Profile
+          </mat-card-title>
+        </mat-card-title-group>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content style="margin-top: 15px">
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>Name</mat-label>
+                  <input
+                    type="text"
+                    #titleField
+                    matInput
+                    maxlength="70"
+                    placeholder="name"
+                    formControlName="name"
+                    required
+                    readonly="true"
+                  />
+                  <mat-error>Name is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>Age</mat-label>
+                  <input
+                    type="text"
+                    #titleField
+                    matInput
+                    maxlength="70"
+                    placeholder="Age"
+                    formControlName="age"
+                    required
+                    readonly="true"
+                  />
+                  <mat-error>Age is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field
+                  class="mb-2"
+                  appearance="fill"
+                  style="width: 100%"
+                >
+                  <mat-label>NIC</mat-label>
+                  <input
+                    matInput
+                    formControlName="nic"
+                    type="text"
+                    readonly="true"
+                  />
+                  <mat-error>NIC is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
