@@ -10,7 +10,5 @@ const getAllCategories = asyncHandler(async (req, res) => {
 // @route   GET /api/categories
 const createCategory = asyncHandler(async (req, res) => {
   const { category } = req.body;
-  const createdAuthor = await Category.create({
-   category,
-  });
+
 
