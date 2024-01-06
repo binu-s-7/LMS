@@ -8,3 +8,9 @@
   form = new FormGroup({
     language:new FormControl(",[Validators.required]),
 });
+
+constructor(
+private snackBar:MatSnackBar,
+public dialogRef:MatDialogRef<AddLanguageComponent>,
+private itemsService:ItemsServiceService
+  ){}
