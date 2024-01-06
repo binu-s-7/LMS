@@ -20,4 +20,18 @@ constructor(
     private userService: UserService,
     private snackBar: MatSnackBar
   ) {}
+  proceedRegister() {
+    const user = {
+      name: this.registerForm.controls.name.value as string,
+      userName: this.registerForm.controls.email.value as string,
+      email: this.registerForm.controls.email.value as string,
+      password: this.registerForm.controls.password.value?.toString(),
+    };
+    this.userService.registerUser(user).subscribe({
+      next: (res) => {
+        this.snackBar.open('Logged in Successfully', 'Dismiss', {
+          duration: 3000,
+        });
+        this.router.navigate([`/login`]);
+      },
 
