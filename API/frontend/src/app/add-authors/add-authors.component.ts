@@ -15,5 +15,23 @@ import { ItemsServiceService } from '../services/items-service.service';
     author: new FormControl('', [Validators.required]),
   });
 
+   constructor(
+    private snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<AddAuthorsComponent>,
+    private itemsService: ItemsServiceService
+  ) {}
+
+  onSave() {
+    const author = this.form.value.author as string;
+    this.itemsService.addAuthor(author).subscribe(() => {
+      this.dialogRef.close(author);
+      this.snackBar.open('Author added Successfully', 'Dismiss', {
+        duration: 3000,
+      });
+    });
+  }
+}
+
+  
 
 
