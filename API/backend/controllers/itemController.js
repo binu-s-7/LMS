@@ -44,3 +44,26 @@ const createItem = asyncHandler(async (req, res) => {
     throw new Error("invalid data");
   }
 });
+
+// @desc    Get item by _id
+// @route   GET /api/items/item/:id
+const getItemById = asyncHandler(async (req, res) => {
+  const item = await Item.findById(req.params.id);
+  if (item) {
+    res.json({
+      _id: item._id,
+      id: item.id,
+      title: item.title,
+      category: item.category,
+      publisher: item.publisher,
+      language: item.language,
+      author: item.author,
+      borrowedBy: item.borrowedBy,
+      status: item.status,
+      borrowedDate: item.borrowedDate,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Item not found");
+  }
+});
