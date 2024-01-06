@@ -67,3 +67,29 @@ const getItemById = asyncHandler(async (req, res) => {
     throw new Error("Item not found");
   }
 });
+
+// @desc    Update item
+// @route   PUT /api/items/:id
+const updateItem = asyncHandler(async (req, res) => {
+  const item = await Item.findById(req.params.id);
+
+  if (item) {
+    item.title = req.body.title || user.title;
+    item.author = req.body.author || user.author;
+    item.category = req.body.category || user.category;
+    item.publisher = req.body.publisher || user.publisher;
+    item.language = req.body.language || user.language;
+    item.borrowedBy = req.body.borrowedBy || user.borrowedBy;
+    item.status = req.body.status || user.status;
+    item.borrowedDate = req.body.borrowedDate || user.borrowedDate;
+
+    const updatedItem = await item.save();
+
+    res.json({
+      ...updatedItem,
+    });
+  } else {
+    res.status(404);
+    throw new Error("Item not found");
+  }
+});
