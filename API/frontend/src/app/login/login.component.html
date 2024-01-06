@@ -1,0 +1,23 @@
+<mat-card class="login-card">
+  <mat-card-header >
+    <mat-card-title>User Login</mat-card-title>
+  </mat-card-header>
+<mat-card-content>
+<form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
+      <mat-form-field class="example-full-width">
+        <mat-label>E-Mail</mat-label>
+        <input matInput formControlName="email">
+        <mat-error>E-mail is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-error>Password is required</mat-error>
+      </mat-form-field
+      <div class="button-group">
+        <button mat-raised-button color="primary" [disabled]="!this.loginForm.valid">Login</button>
+        <a (click)="goToRegister()" mat-raised-button color="accent">New User?</a>
+      </div>
+    </form>
+</mat-card-content>
+</mat-card>
