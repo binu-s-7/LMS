@@ -14,3 +14,15 @@ const createLanguage = asyncHandler(async(req,res) =>{
   const createdLanguage = await Language.create({
     language,
   });
+
+  if(createdLanguage){
+    res.status(201).json({
+      language:createdLanguage.language,
+    });
+  }else{
+    res.status(400);
+    throw new Error("invalid data");
+  }
+});
+
+export{getAllLanguages,createLanguage};
