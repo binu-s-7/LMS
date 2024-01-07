@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "id": "41104",
+      "title": "harry potter",
+      "description": "book 1",
+      "category": "Fantasy",
+      "borrowedBy": "123",
+      "status": "Borrowed",
+      "borrowedDate": "2023-12-25T18:30:00.000Z"
+    },
+    {
+      "id": "36709",
+      "title": "sherlock holms",
+      "description": "book 1",
+      "category": "Science Fiction",
+      "borrowedBy": "8599",
+      "status": "Available",
+      "borrowedDate": "2023-12-11T18:30:00.000Z"
+    },
+    {
+      "id": "86830",
+      "title": "famous 5",
+      "description": "enid bliton",
+      "category": "Mystery",
+      "status": "Borrowed",
+      "borrowedBy": "1223",
+      "borrowedDate": "2023-11-30T18:30:00.000Z"
+    },
+    {
+      "id": "77812",
+      "title": "book 1",
+      "description": "jjhw",
+      "category": "Thriller",
+      "status": "Borrowed",
+      "borrowedBy": "133",
+      "borrowedDate": "2023-12-06T18:30:00.000Z"
+    },
+    {
+      "id": "98497",
+      "title": "ss",
+      "description": "nk",
+      "category": "Fantasy",
+      "status": "Available",
+      "borrowedBy": "mnknk",
+      "borrowedDate": "2023-11-30T18:30:00.000Z"
+    },
+    {
+      "id": "65206",
+      "title": "ffre",
+      "description": "nn",
+      "category": "Science Fiction",
+      "status": "Available",
+      "borrowedBy": "36565",
+      "borrowedDate": "2023-12-08T18:30:00.000Z"
+    }
+  ]
+}
