@@ -1,0 +1,310 @@
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-progress-spinner diameter="50" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+<div class="main" *ngIf="!isLoading">
+
+<div class="button-container">
+  <div class="filter">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. Harry Potter"
+        #input
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="add-item">
+    <button (click)="addItem()" mat-flat-button color="primary">Add Item</button>
+    <button (click)="addLanguage()" mat-flat-button color="primary">Add Language</button>
+    <button (click)="addCategory()" mat-flat-button color="primary">Add Category</button>
+    <button (click)="addPublisher()" mat-flat-button color="primary">Add Publisher</button>
+    <button (click)="addAuthor()" mat-flat-button color="primary">Add Author</button>
+    <button (click)="logOut()" mat-flat-button color="primary">Log Out</button>
+  </div>
+</div>
+  
+  <div class="mat-elevation-z8 m-3">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <form [formGroup]="form">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+        </ng-container>
+  
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>title</mat-label>
+                <input
+                  type="text"
+                  #titleField
+                  matInput
+                  maxlength="70"
+                  placeholder="title"
+                  formControlName="title"
+                  required
+                />
+                <mat-error>Title is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+              {{ row.title }}
+            </div>
+          </td>
+        </ng-container>
+  
+        <!-- author Column -->
+        <ng-container matColumnDef="author">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Author</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>Author</mat-label>
+                <mat-select formControlName="author">
+                  <mat-option
+                    *ngFor="let author of authorsList"
+                    [value]="author"
+                  >
+                    {{ author }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Author is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+              {{ row.author }}
+            </div>
+          </td>
+        </ng-container>
+  
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option
+                    *ngFor="let category of categoriesList"
+                    [value]="category"
+                  >
+                    {{ category }}
+                  </mat-option>
+                </mat-select>
+                <mat-error>Category is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+              {{ row.category }}
+            </div>
+          </td>
+        </ng-container>
+
+          <!-- publisher Column -->
+          <ng-container matColumnDef="publisher">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Publisher</th>
+            <td mat-cell *matCellDef="let row">
+              <div
+                *ngIf="isEdit && editItemId === row._id"
+                style="padding-top: 10px"
+              >
+                <mat-form-field>
+                  <mat-label>publisher</mat-label>
+                  <mat-select formControlName="publisher">
+                    <mat-option
+                      *ngFor="let publisher of publishersList"
+                      [value]="publisher"
+                    >
+                      {{ publisher }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>publisher is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div *ngIf="!isEdit || editItemId !== row._id">
+                {{ row.publisher }}
+              </div>
+            </td>
+          </ng-container>
+
+           <!-- languages Column -->
+           <ng-container matColumnDef="language">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Language</th>
+            <td mat-cell *matCellDef="let row">
+              <div
+                *ngIf="isEdit && editItemId === row._id"
+                style="padding-top: 10px"
+              >
+                <mat-form-field>
+                  <mat-label>language</mat-label>
+                  <mat-select formControlName="language">
+                    <mat-option
+                      *ngFor="let language of languagesList"
+                      [value]="language"
+                    >
+                      {{ language }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>language is required</mat-error>
+                </mat-form-field>
+              </div>
+              <div *ngIf="!isEdit || editItemId !== row._id">
+                {{ row.language }}
+              </div>
+            </td>
+          </ng-container>
+  
+        <!-- borrowedBy Column -->
+        <ng-container matColumnDef="borrowedBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrowed By</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>Borrowed By</mat-label>
+                <input matInput formControlName="borrowedBy" type="text" />
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+              {{ row.borrowedBy }}
+            </div>
+          </td>
+        </ng-container>
+  
+        <!-- status Column -->
+        <ng-container matColumnDef="Availability">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Availability</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>Availability</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="status"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let item of status" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error>Availability is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+
+              <mat-chip [color]="getChipColor(row.status)"> {{ row.status }}</mat-chip>
+            </div>
+          </td>
+        </ng-container>
+  
+        <!-- borrowedDate Column -->
+        <ng-container matColumnDef="borrowedDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Borrowed Date</th>
+          <td mat-cell *matCellDef="let row">
+            <div
+              *ngIf="isEdit && editItemId === row._id"
+              style="padding-top: 10px"
+            >
+              <mat-form-field>
+                <mat-label>Borrowed Date</mat-label>
+                <input
+                  placeholder="Date"
+                  type="text"
+                  matInput
+                  formControlName="borrowedDate"
+                  [matDatepicker]="pickerA"
+                  (click)="pickerA.open()"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerA"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerA></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isEdit || editItemId !== row._id">
+              {{ row.borrowedDate | date }}
+            </div>
+          </td>
+        </ng-container>
+      </form>
+  
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let row" style="padding: 10px">
+          <div *ngIf="!isEdit">
+            <button
+              mat-icon-button
+              (click)="onEdit(row._id)"
+              class="mx-2"
+              color="accent"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div *ngIf="isEdit" class="row">
+            <button
+              mat-flat-button
+              (click)="onSave(row._id)"
+              class="mx-1"
+              color="accent"
+            >
+              Save
+            </button>
+          </div>
+          <button
+            (click)="deleteItem(row._id)"
+            mat-icon-button
+            color="warn"
+            class="mx-1"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+      <!-- when there is no matching data -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No Matching Data
+        </td>
+      </tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+  
+</div>
