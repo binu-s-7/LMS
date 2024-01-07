@@ -14,3 +14,15 @@ private snackBar:MatSnackBar,
 public dialogRef:MatDialogRef<AddLanguageComponent>,
 private itemsService:ItemsServiceService
   ){}
+
+onSave()
+{
+  const language = this.form.value.language as string
+  this.itemsService.addLanguage(language).subscribe(() =>{
+    this.dialogRef.close(language);
+    this.snackBar.open('Language added Successfully','Dismiss',{
+      duration:3000,
+    });
+  });
+}
+}
